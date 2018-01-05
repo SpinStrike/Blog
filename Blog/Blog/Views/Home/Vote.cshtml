@@ -1,0 +1,18 @@
+﻿@model Blog.AppLogic.DTO.VotingDto
+
+<p>@Model.Text</p>
+
+@using (Ajax.BeginForm("Vote", new AjaxOptions { UpdateTargetId = "votingArea", InsertionMode = InsertionMode.Replace }))
+{
+    @Html.Hidden("idVoting", Model.Id)
+    <ol class="remove-markers remove-indents">
+        @foreach (var option in Model.Options)
+        {
+            <li>
+                <input type="radio" name="option" value="@option.Id"/>
+                <span>@option.Text</span><br />
+            </li>
+        }
+    </ol>
+    <input type="submit" value="Голосовать/Результаты"/>
+}

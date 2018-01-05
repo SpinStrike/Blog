@@ -1,0 +1,19 @@
+﻿<div class="right-siderbar-block">
+    <ul>
+        <li class="remove-markers">
+            <div class="menu-button" >
+                @Html.ActionLink("Главная", "Index", "Home", null, new { @class = "main-font remove-decoration" })
+            </div>
+        </li>
+        <li class="remove-markers">
+            <div class="menu-button">
+                @Html.ActionLink("Гостевая", "GuestReview", "Guest", null, new { @class = "main-font remove-decoration" })
+            </div>
+        </li>
+        <li class="remove-markers">
+         <div class="menu-button">
+               @Html.ActionLink("Анкета", "QuestionnaireHandler", "Questionnaire", null, new { @class= "main-font remove-decoration" })
+            </div>
+        </li>
+    </ul>
+</div>

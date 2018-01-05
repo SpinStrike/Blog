@@ -1,0 +1,27 @@
+﻿@model Blog.Models.ModelWrapper<Blog.AppLogic.DTO.ArticleDto>
+@using Blog.Models.ExtensionsMethods;
+
+@{
+    ViewBag.Title = Model.MainContent.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="blog-elements-border"> 
+    <p id="article-id-title">@Model.MainContent.Title</p>
+    @foreach (var paragraph in Model.MainContent.Text.SplitToParagraphs())
+    {    
+        <p id="article-id-content" class="main-font blog-text-format text-paragraph delete-gaps">@paragraph</p>
+    }
+    <p>@Model.MainContent.PublishingDate</p>
+    <span>Теги к статье: </span>
+    <ul class="remove-markers">
+        @foreach (var tag in Model.MainContent.Tags)
+        {
+            <li style="display: inline;">
+                @Html.ActionLink(tag.Text, "Index", "Home", new { idTag = tag.Id } , new { @class = "main-font remove-decoration"})
+                <span> / </span>
+            </li>
+        }
+    </ul>
+</div>
+

@@ -1,0 +1,31 @@
+﻿@model Blog.Models.ModelWrapper<Blog.AppLogic.DTO.QuestionnaireStatisticDto>
+@using System.Linq
+
+@{
+    ViewBag.Title = "Результаты анкетирования";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="blog-elements-border"> 
+    <h2>Результаты Анкетирования</h2>
+    <h2>@Model.MainContent.Title</h2>
+    @{float percent; }
+    @foreach(var question in Model.MainContent.Questions)
+    {
+        percent = 0.0f;
+        int totalAnswers = question.Answers.Sum(a => a.Count);
+        <div>
+            <p>@question.Text<p>
+            <ol>
+                @foreach (var answer in question.Answers)
+                {
+                    percent = totalAnswers != 0 ? (float)(answer.Count) / totalAnswers * 100: 0.0f;
+                    <li>
+                        <span>@answer.Text - @answer.Count (@percent.ToString("##0.##") %)</span>
+                    </li>
+                }
+                </ol>
+         </div>
+    }
+</div>
+

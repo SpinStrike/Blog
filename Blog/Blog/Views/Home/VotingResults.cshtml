@@ -1,0 +1,21 @@
+﻿@model Blog.AppLogic.DTO.VotingDto
+@using System.Linq;
+
+@{
+     double totalVotes = Model.Options.Sum(x => x.Count);
+}
+
+<p>@Model.Text</p>
+<ol class="remove-markers remove-indents">
+    @foreach (var option in Model.Options)
+    {
+        double percent = option.Count != 0 ? (option.Count*100)/totalVotes : 0;
+        <li id="li-histogram-margin-buttom">
+            <div id="histogram-output" style="width: @(Math.Round(percent,0))%">
+                <span>@percent.ToString("##0.##")%</span>
+            </div>
+            <span>@option.Text</span>
+        </li>
+    }
+</ol>
+    

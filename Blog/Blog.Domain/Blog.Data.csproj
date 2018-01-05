@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0CD81C94-283F-4B17-9269-547F476F1CBD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Blog.Domain</RootNamespace>
+    <AssemblyName>Blog.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EF\BlogDbContext.cs" />
+    <Compile Include="EF\Configuration\AnswerConfiguration.cs" />
+    <Compile Include="EF\Configuration\ArticleConfiguration.cs" />
+    <Compile Include="EF\Configuration\ArticleTagConfiguration.cs" />
+    <Compile Include="EF\Configuration\CompletedQuestionnaireConfiguration.cs" />
+    <Compile Include="EF\Configuration\QuestionConfiguration.cs" />
+    <Compile Include="EF\Configuration\QuestionnaireConfiguration.cs" />
+    <Compile Include="EF\Configuration\ReviewConfiguration.cs" />
+    <Compile Include="EF\Configuration\SelectedAnswerConfiguration.cs" />
+    <Compile Include="EF\Configuration\VotingConfiguration.cs" />
+    <Compile Include="EF\Configuration\VotingOptionConfiguration.cs" />
+    <Compile Include="EF\DbInicializer.cs" />
+    <Compile Include="Model\Answer.cs" />
+    <Compile Include="Model\Article.cs" />
+    <Compile Include="Model\ArticleTag.cs" />
+    <Compile Include="Model\BaseEntity.cs" />
+    <Compile Include="Model\CompletedQuestionnaire.cs" />
+    <Compile Include="Model\PublishingWorkBase.cs" />
+    <Compile Include="Model\Question.cs" />
+    <Compile Include="Model\Questionnaire.cs" />
+    <Compile Include="Model\Review.cs" />
+    <Compile Include="Model\SelectedAnswer.cs" />
+    <Compile Include="Model\Voting.cs" />
+    <Compile Include="Model\VotingOption.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\IArticleRepository.cs" />
+    <Compile Include="Repository\IArticleTagRepository.cs" />
+    <Compile Include="Repository\IBaseRepository.cs" />
+    <Compile Include="Repository\ICompletedQuestionnaireRepository.cs" />
+    <Compile Include="Repository\Implementation\ArticleRepository.cs" />
+    <Compile Include="Repository\Implementation\ArticleTagRepository.cs" />
+    <Compile Include="Repository\Implementation\BaseRepository.cs" />
+    <Compile Include="Repository\Implementation\CompletedQuestionnaireRepository.cs" />
+    <Compile Include="Repository\Implementation\QuestionnaireRepository.cs" />
+    <Compile Include="Repository\Implementation\ReviewRepository.cs" />
+    <Compile Include="Repository\Implementation\SelectedAnswerRepository.cs" />
+    <Compile Include="Repository\Implementation\VotingRepository.cs" />
+    <Compile Include="Repository\IQuestionnaireRepository.cs" />
+    <Compile Include="Repository\IReviewRepository.cs" />
+    <Compile Include="Repository\ISelectedAnswerRepository.cs" />
+    <Compile Include="Repository\IVotingRepository.cs" />
+    <Compile Include="Repository\RepositoryFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

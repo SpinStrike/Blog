@@ -1,0 +1,219 @@
+﻿.main-font{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+.delete-gaps {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.remove-markers {
+    list-style-type: none;
+    margin-left: 0;
+}
+
+.remove-indents{
+    padding: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+.remove-decoration {
+    text-decoration: none
+}
+
+.blog-elements-border {
+    border: solid 1px #4caf50;
+    border-radius: 20px 20px;
+    background-color: rgba(10, 255, 241, 0.09);
+    padding: 10px;
+}
+
+#header {
+    border-radius: 20px 20px;
+    background-color: #02da88;
+    width: 100%;
+    height: 100px;
+    position: relative;
+    float: none;
+}
+
+#logo {
+    border-radius: 100px;
+    position: relative;
+    float: left;
+    /*font-family: Arial, Helvetica, sans-serif;*/
+    top: 8%;
+    bottom: 8%;
+    left: 10px;
+}
+
+#blog-name {
+    position: relative;
+    float: left;
+    left: 2%;
+    font-size: 200%;
+    font-family: Impact, Arial, Helvetica, sans-serif;
+}
+
+#content-container {
+    width: 80%;
+    height: 1000px;
+    margin-top: 1%;
+    position: relative;
+    left: 10%;
+    right: 10%;
+}
+
+#main-content {
+    width: 78%;
+    height: 100%;
+    position: relative;
+    float: left;
+}
+
+#right-sidebar {
+    width: 20%;
+    position: relative;
+    float: right;
+}
+
+.right-siderbar-block {
+    border-radius: 20px 20px;
+    background-color: #f8f98a;
+    border: solid 1px #e0642c;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.menu-button {
+    border-radius: 10px 10px;
+    background-color: #e0642c;
+    height: 14px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 8px;
+    text-align: center;
+}
+
+#histogram-output {
+    border-radius: 5px 5px;
+    background-color: #e0642c;
+    height: 18px;
+    overflow-x: visible
+}
+
+#li-histogram-margin-buttom{
+    margin-bottom: 7px;
+}
+
+
+#article-content {
+    height: 50px;
+}
+
+#article {   
+    height: 130px;
+    margin-bottom: 10px;
+}
+
+.blog-text-format {
+    text-align: justify;
+    text-indent: 47px;
+}
+
+#full-article {
+    position: relative;
+    float: right;
+    right: 1%;
+}
+
+#review-form {
+    border-radius: 20px 20px;
+    border: solid 1px #4caf50;
+    background-color: rgba(10, 255, 241, 0.09);
+    height: 250px;
+    padding: 10px;
+}
+
+#textarea-label {
+    position: relative;
+    float: none;
+    left: 5%;
+}
+
+#textarea-review {
+    position: relative;
+    width: 90%;
+    height: 200px;
+    float: none;
+    resize: none;
+    left: 5%;
+}
+
+#author-label {
+    position: relative;
+    float: left;
+    left: 5%;
+}
+
+#textbox-author {
+    position: relative;
+    float: left;
+    left: 6%;
+}
+
+.submit-button {
+    position: relative;
+    float: right;
+    right: 4%;
+}
+
+#reviews-container {
+    height: 650px;
+    padding: 10px;
+    margin-top: 10px;
+    overflow-y: scroll;
+}
+
+.single-review {
+    border: solid 1px #4caf50;
+    border-radius: 10px 10px;
+    margin: 5px;
+    padding: 5px;
+}
+
+.text-center-footer{
+    text-align: center
+}
+
+
+/*input error styles*/
+field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}

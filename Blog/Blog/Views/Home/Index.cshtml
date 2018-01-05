@@ -1,0 +1,23 @@
+﻿@model Blog.Models.ModelWrapper<System.Collections.Generic.IEnumerable<Blog.AppLogic.DTO.ArticleDto>>
+
+@{
+    ViewBag.Title = "Главная";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="articles-container">
+    @foreach (var article in Model.MainContent)
+    {
+        <div id="article" class="blog-elements-border">
+            <p id="article-title" class="main-font">@article.Title</p>
+            <p id="article-content" class="blog-text-format main-font">@article.Text</p>
+
+            @using (Html.BeginForm("ReadMore", "Home", FormMethod.Get))
+            {
+                @Html.Hidden("id", article.Id)
+                <input type = "submit" value = "Подробнее" id="full-article" class="main-font"/>
+            }
+        </div>
+    }
+</div>
+

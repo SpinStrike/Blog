@@ -1,0 +1,46 @@
+﻿@using Blog.AppLogic.DTO;
+@model Blog.Models.ModelWrapper<Blog.AppLogic.DTO.QuestionnaireDto>
+
+@{
+    ViewBag.Title = "Анкета";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id ="questions-block" class="blog-elements-border">
+    @using (Html.BeginForm("QuestionnaireHandler", "Questionnaire", FormMethod.Post))
+    {
+        @Html.Hidden("questionareId", Model.MainContent.Id);
+        <p class="text-center-footer"><h2>@Model.MainContent.Title</h2></p>
+        @GenerateQuestionOutput(Model.MainContent);
+        <input type="submit" value="Ответить" class="submit-button" style="bottom: 20px;" />
+    }
+</div>
+
+@helper GenerateQuestionOutput(QuestionnaireDto questionnaire)
+{
+    int index = 0;
+    foreach (var question in questionnaire.Questions)
+    {
+        <div>
+            <span>@question.Text</span><br />
+            <ol start="1" >
+            @foreach (var answer in question.Answers)
+            {  
+                <li>
+                @if (!question.IsFewAnswers)
+                {
+                    <input name="answer[@index]" type="radio" value="@answer.Id"/>
+                }
+                else
+                {
+                    <input name="answer[@index]" type="checkbox" value="@answer.Id"/>
+                    index++;
+                }
+                <span>@answer.Text</span><br />
+                </li>
+            }
+            </ol>
+        </div>
+        index++;
+    }
+}

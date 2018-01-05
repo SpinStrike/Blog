@@ -1,0 +1,36 @@
+﻿@model Blog.Models.ReviewModelWrapper
+@using Blog.Models.ExtensionsMethods;
+
+@{
+    ViewBag.Title = "Гостевая";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <div id="review-form">
+        @using (Html.BeginForm("AddReview", "Guest", FormMethod.Post))
+        {
+            @Html.ValidationSummary(true)
+            @Html.Label("Оставить отзыв", new { id = "textarea-label", @class = "main-font"})
+            @Html.TextAreaFor(x => x.Review.ReviewText, new { id = "textarea-review", @class = "main-font"})<br>
+            @Html.Label("Имя автора", new { id = "author-label", @class = "main-font" })
+            @Html.TextBoxFor(x => x.Review.Author,  new { id = "textbox-author", @class = "main-font"})
+            @Html.HiddenFor(x => x.Review.Time, new { Value = DateTime.Now })    
+            <input class="submit-button" type="submit" value="Отправить" />
+        }
+    </div>
+    <div id="reviews-container">
+        @foreach (var review in Model.MainContent)
+        {
+            <div class="single-review">
+                <p id="author-review" class="main-font">Автор: @review.Author</p>
+                @foreach (var p in review.Text.SplitToParagraphs())
+                {
+                    <p id="text-review" class="main-font blog-text-format text-paragraph delete-gaps">@p</p>
+                }
+                <p id="publishindDate-review" class="main-font text-paragraph">@review.PublishingDate</p>
+            </div>
+        }
+    </div>
+</div>
+
