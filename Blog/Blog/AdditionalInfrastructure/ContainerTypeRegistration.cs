@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Blog.Controllers;
+﻿using Blog.Controllers;
 using Blog.AppLogic.Service.Implementation;
 using Blog.AppLogic.Service;
 
@@ -23,6 +19,10 @@ namespace Blog.AdditionalInfrastructure
             container.Register<HomeController, HomeController>();
             container.Register<QuestionnaireController, QuestionnaireController>();
             container.Register<GuestController, GuestController>();
+            container.Register<AccountController, AccountController>();
+
+            container.Register<Areas.Admin.Controllers.HomeController, Areas.Admin.Controllers.HomeController>();
+            container.Register<Areas.Admin.Controllers.ArticleController, Areas.Admin.Controllers.ArticleController>();
         }
     }
 }

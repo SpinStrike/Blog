@@ -7,18 +7,32 @@
 }
 
 <div>
-    <div id="review-form">
-        @using (Html.BeginForm("AddReview", "Guest", FormMethod.Post))
-        {
-            @Html.ValidationSummary(true)
-            @Html.Label("Оставить отзыв", new { id = "textarea-label", @class = "main-font"})
-            @Html.TextAreaFor(x => x.Review.ReviewText, new { id = "textarea-review", @class = "main-font"})<br>
-            @Html.Label("Имя автора", new { id = "author-label", @class = "main-font" })
-            @Html.TextBoxFor(x => x.Review.Author,  new { id = "textbox-author", @class = "main-font"})
-            @Html.HiddenFor(x => x.Review.Time, new { Value = DateTime.Now })    
-            <input class="submit-button" type="submit" value="Отправить" />
-        }
-    </div>
+    @if (Request.IsAuthenticated)
+    {
+        <div id="review-form">
+            @using (Html.BeginForm("AddReview", "Guest", FormMethod.Post))
+            {
+                @Html.ValidationSummary(true)
+                @Html.Label("Оставить отзыв", new { id = "textarea-label", @class = "main-font" })
+                @Html.TextAreaFor(x => x.Review.ReviewText, new { id = "textarea-review", @class = "main-font" })<br>
+
+                Model.Review.Author = User.Identity.Name;
+                @Html.HiddenFor(x => x.Review.Author)
+
+                Model.Review.Time = DateTime.Now;
+                @Html.HiddenFor(x => x.Review.Time)
+                <input class="submit-button" type="submit" value="Отправить" />
+            }
+        
+        </div>
+    }
+    else
+    {
+        <div class="blog-elements-border">
+            <h2>Отзывы</h2>
+            <p>Оставлять отзывы могут только авторизованные пользователи.</p>
+        </div>
+    }
     <div id="reviews-container">
         @foreach (var review in Model.MainContent)
         {

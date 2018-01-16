@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Text;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Blog.Data.Model;
 
 namespace Blog.Data.EF
@@ -155,6 +156,44 @@ namespace Blog.Data.EF
             voting.Options.Add(new VotingOption() { Text = "Саб-Зиро" });
             voting.Options.Add(new VotingOption() { Text = "Скорпион" });
             context.Votings.Add(voting);
+
+            var userRoleId = Guid.NewGuid().ToString();
+            var userRole = new IdentityRole()
+            {
+                Id = userRoleId,
+                Name = "User"
+            };
+
+            var administratorRoleId = Guid.NewGuid().ToString();
+            var adminRole = new IdentityRole()
+            {
+                Id = administratorRoleId,
+                Name = "Administrator"
+            };
+            context.Roles.Add(userRole);
+            context.Roles.Add(adminRole);
+
+            var administrator = new User()
+            {
+                Id = "296e0f2d-d54e-4186-9ac3-8809a52d588c",
+                UserName = "Admin",
+                Email = "FirstAdmin@gmail.com",
+                PasswordHash = "AAlFyLXgfAvNXRbRCWCyR2l1ALhs23nicgMeM8S45Ou5T4+eJl1TiEnNvXJTMe/gIA==",
+                SecurityStamp = "fc84bf20-9a02-459a-9270-660137bcd907"
+            };
+
+            administrator.Roles.Add(new IdentityUserRole()
+            {
+                UserId = "296e0f2d-d54e-4186-9ac3-8809a52d588c",
+                RoleId = administratorRoleId
+            });
+
+            administrator.Roles.Add(new IdentityUserRole()
+            {
+                UserId = "296e0f2d-d54e-4186-9ac3-8809a52d588c",
+                RoleId = userRoleId
+            });
+            context.Users.Add(administrator);
 
             context.SaveChanges();
         }

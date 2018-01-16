@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using Blog.AppLogic.Service;
 using Blog.AppLogic.DTO;
@@ -10,6 +9,7 @@ using Blog.Models;
 
 namespace Blog.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         public HomeController(IArticleService articleService, IVotingService votingService)
@@ -53,6 +53,7 @@ namespace Blog.Controllers
                 MainContent = _aService.FindById(id.Value),
                 Voting = _vService.GetRandom()
             };
+
             return View(mw);
         }
 

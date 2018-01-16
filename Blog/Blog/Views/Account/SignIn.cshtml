@@ -1,0 +1,26 @@
+﻿@model Blog.Models.AuthorizeModelWrapper
+
+@{
+    ViewBag.Title = "Вход";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="blog-elements-border">
+    <h2>Форма Авторизации</h2>
+    @using (Html.BeginForm("SignIn", "Account", FormMethod.Post, new { area = "" }))
+    {
+        @Html.ValidationSummary(true,null, new { style= "margin-left:15px;" });
+
+        @Html.Label("Логин")<br>
+        @Html.TextBoxFor(x => x.MainContent.UserName)
+        @Html.ValidationMessageFor(x => x.MainContent.UserName, null, new { @class = "validation-summary-errors" })<br><br>
+
+        @Html.Label("Пароль")<br>
+        @Html.PasswordFor(x => x.MainContent.Password)
+        @Html.ValidationMessageFor(x => x.MainContent.Password, null, new { @class = "validation-summary-errors" })<br><br>
+
+        @Html.CheckBoxFor(x => x.MainContent.IsRememberMe)
+        @Html.Label("Запомнить меня")<br><br>
+
+        <input type="submit" value="Войти" />
+    }
+</div>

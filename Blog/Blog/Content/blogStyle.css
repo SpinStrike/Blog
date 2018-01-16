@@ -3,6 +3,11 @@
     font-size: 14px;
 }
 
+.main-font-smaller {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
 .delete-gaps {
     margin-top: 0px;
     margin-bottom: 0px;
@@ -46,7 +51,6 @@ ul {
     border-radius: 100px;
     position: relative;
     float: left;
-    /*font-family: Arial, Helvetica, sans-serif;*/
     top: 8%;
     bottom: 8%;
     left: 10px;
@@ -194,6 +198,96 @@ ul {
     text-align: center
 }
 
+.droppDownList-wrapper {
+    width: 200px;
+    height: 20px;
+}
+
+
+#crete-article-container{
+    width: 98%;
+    height: 700px;
+}
+
+.article-content-margin {
+    left: 2%;
+}
+
+#article-title-label {
+    position: absolute;
+    top: 7%;
+}
+
+#article-creating-title {
+    position: absolute;
+    top: 9%;
+}
+
+#article-text-label {
+    position: absolute;
+    top: 13%;
+}
+
+#article-creating-text {
+    position: absolute;
+    top: 15%;
+    width: 96%;
+    height: 350px;
+    resize: none;
+}
+
+#article-tags-label {
+    position: absolute;
+    top: 53%;
+}
+
+#article-tags {
+    position: absolute;
+    top: 55%;
+    width: 50%;
+    height: 100px;
+    resize: none;
+}
+
+#article-existing-tags-label {
+    position: absolute;
+    top: 53%;
+    left: 60%;
+}
+
+#article-existing-tags {
+    position: absolute;
+    top: 55%;
+    left: 60%;
+}
+#add-existing-tag-button {
+    position: absolute;
+    top: 55%;
+    right: 2%
+}
+
+#submit-article-creation-button {
+    position: absolute;
+    top: 69%;
+    right: 2%
+}
+
+#account-menu {
+    position: absolute;
+    top: 43%;
+    right: 2%
+}
+
+.account-menu-space{
+    margin-right:10px;
+}
+
+#article-creation-result{
+    position: absolute;
+    top: 4%;
+    right: 2%;
+    color:forestgreen;
+}
 
 /*input error styles*/
 field-validation-error {
@@ -217,3 +311,5 @@ field-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+

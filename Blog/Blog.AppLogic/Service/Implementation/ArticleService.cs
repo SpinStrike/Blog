@@ -71,6 +71,13 @@ namespace Blog.AppLogic.Service.Implementation
                 .Articles.Select(x => x.ToDto());
         }
 
+        public IEnumerable<ArticleTagDto> GetAllTags()
+        {
+            return _atRepository.FetchAll()
+                .OrderBy(x => x.Text)
+                .Select(x => x.ToDto());
+        }
+
         private IArticleRepository _aRepository;
         private IArticleTagRepository _atRepository;
     }

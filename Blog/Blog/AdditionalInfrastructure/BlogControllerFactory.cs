@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Routing;
-using System.Web.SessionState;
 using Blog.AppLogic.Service.Implementation;
 using Blog.AppLogic.Service;
-
-
 
 namespace Blog.AdditionalInfrastructure
 {
@@ -21,8 +16,12 @@ namespace Blog.AdditionalInfrastructure
 
         public override IController CreateController(System.Web.Routing.RequestContext requestContext, string controllerName)
         {
-            var controllerType = Type.GetType(string.Concat("Blog.Controllers.", controllerName, "Controller"));
+            var controllerNamespace = ((IEnumerable<string>)requestContext.RouteData.DataTokens["Namespaces"]).First();
+
+            var controllerType = Type.GetType(string.Concat(controllerNamespace,".",controllerName, "Controller"));
+
             IController controller = _container.Resolve(controllerType) as Controller;
+
             return controller;
         }
 
@@ -31,6 +30,7 @@ namespace Blog.AdditionalInfrastructure
             base.ReleaseController(controller);
 
             var contextService = _container.Resolve(typeof(IDbContextService)) as DbContextService;
+
             contextService.Dispose();
         }
 

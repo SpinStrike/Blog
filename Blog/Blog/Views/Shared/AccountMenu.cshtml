@@ -1,0 +1,12 @@
+﻿<div id="account-menu"> 
+    @if (!Request.IsAuthenticated)
+    {
+        @Html.ActionLink("Регистрация", "Register", "Account", new { area = "" }, new { @class = "main-font remove-decoration account-menu-space"})
+        @Html.ActionLink("Войти", "SignIn", "Account", new { area = "" }, new { @class = "main-font remove-decoration" }) 
+    }
+    else
+    {
+        @Html.Label("Здраствуйте, " + @User.Identity.Name, new { @class = "main-font remove-decoration account-menu-space" })
+        @Html.ActionLink("Выйти", "SignOut", "Account", new { area = "" }, new { @class = "main-font remove-decoration" })
+    }
+</div>

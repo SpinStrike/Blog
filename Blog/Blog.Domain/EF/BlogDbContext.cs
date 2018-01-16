@@ -1,10 +1,11 @@
 ﻿using System.Data.Entity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Blog.Data.Model;
 using Blog.Data.EF.Configuration;
 
 namespace Blog.Data.EF
 {
-    public class BlogDbContext : DbContext
+    public class BlogDbContext : IdentityDbContext<User>
     {
         public DbSet<Article> Articles { get; set; }
 
@@ -33,6 +34,11 @@ namespace Blog.Data.EF
             Database.SetInitializer<BlogDbContext>(new DbInicializer());
         }
 
+        public static BlogDbContext CreateDb()
+        {
+            return new BlogDbContext("BlogDbConnection");
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new ArticleConfiguration());
@@ -47,6 +53,16 @@ namespace Blog.Data.EF
             modelBuilder.Configurations.Add(new VotingOptionConfiguration());
 
             base.OnModelCreating(modelBuilder);
+        }
+
+        public Database GetDatabase()
+        {
+            return base.Database;
+        }
+
+        public new void Dispose()
+        {
+            base.Dispose(true);
         }
     }
 }

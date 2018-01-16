@@ -1,0 +1,47 @@
+﻿@model Blog.Models.ArticleModelWrapper
+
+@{
+    ViewBag.Title = "Создание статьи";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="crete-article-container" class ="blog-elements-border">
+    <h2>Создание статьи</h2>
+    <span id="article-creation-result" class="main-font">@ViewBag.SuccessString</span>
+    @using (Html.BeginForm("Create", "Article", FormMethod.Post))
+    {
+        @Html.ValidationSummary(true)
+        @Html.Label("Название", new { id = "article-title-label", @class = "article-content-margin-left main-font" })
+        @Html.TextBoxFor(x => x.Article.Title, new { id = "article-creating-title", @class = "article-content-margin-left main-font" })
+        @Html.Label("Текст статьи", new { id = "article-text-label", @class = "article-content-margin-left main-font" })
+        @Html.TextAreaFor(x => x.Article.Text, new { id = "article-creating-text", @class = "article-content-margin-left main-font" })
+        @Html.Label("Теги к статье (разделители тегов: пробел ',' ';' '/')", new { id = "article-tags-label", @class = "article-content-margin-left main-font" })
+        @Html.TextAreaFor(x => x.Article.Tags, new { id = "article-tags", @class = "article-content-margin-left main-font" })
+
+        @Html.Label("Зарегестрированные теги", new { id = "article-existing-tags-label", @class = "article-content-margin-left main-font" })
+        @Html.DropDownList("existingTags", new SelectList(Model.MainContent), new { id = "article-existing-tags", @class = "droppDownList-wrapper main-font" })
+        <input type="button"  id="add-existing-tag-button" value="Добавить тег" class="main-font" onclick = 'addTagToArticle()'/>
+
+        Model.Article.PublishingTime = DateTime.Now;
+        @Html.HiddenFor(x => x.Article.PublishingTime)  
+        <input id="submit-article-creation-button" class="main-font" type="submit" value="Создать" />
+    }
+</div>
+
+<script>
+    function addTagToArticle()
+    {
+        var selectdTag = document.getElementById("article-existing-tags").value;
+        var tagsToAdd = document.getElementById("article-tags").value;
+
+        if (tagsToAdd.indexOf(selectdTag) == -1)
+        {
+            if (tagsToAdd.length != 0)
+            {
+                document.getElementById("article-tags").value += ", ";
+            }
+
+            document.getElementById("article-tags").value += selectdTag;
+        }
+    }
+</script>

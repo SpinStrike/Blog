@@ -15,7 +15,8 @@
         <div id="header">
             <a id="back-to-top"></a>
             <img src="~/Images/logo.png" alt="logo" id="logo" name="logo">
-            <p id="blog-name" name="blog-name">Interesting Blog</p>  
+            <p id="blog-name" name="blog-name">Interesting Blog</p> 
+            @Html.Partial("AccountMenu")
         </div>
     </header>
    <content>
@@ -25,7 +26,7 @@
            </div>
            <div id="right-sidebar">
                @Html.Partial("Menu")
-                   @if (Model.Voting != null)
+                   @if (Model.Voting != null && User.Identity.IsAuthenticated)
                    {
                        <div id="votingArea" class="right-siderbar-block">
                            @Html.Partial("Vote", (VotingDto)Model.Voting)

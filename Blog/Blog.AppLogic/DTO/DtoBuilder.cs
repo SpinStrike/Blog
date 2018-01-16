@@ -13,7 +13,7 @@ namespace Blog.AppLogic.DTO
         /// </summary>
         public static ArticleDto ToDto(this Article article, bool isLoadTags = false)
         {
-            var articleDto  = new ArticleDto()
+            var articleDto = new ArticleDto()
             {
                 Id = article.Id,
                 Title = article.Title,
@@ -21,7 +21,7 @@ namespace Blog.AppLogic.DTO
                 PublishingDate = article.PublishingDate
             };
 
-            if(isLoadTags)
+            if (isLoadTags)
             {
                 articleDto.Tags = article.Tags.Select(x => new ArticleTagDto() {
                     Id = x.Id,
@@ -85,7 +85,7 @@ namespace Blog.AppLogic.DTO
                 Id = voting.Id,
                 Text = voting.Text };
 
-            foreach(var option in voting.Options)
+            foreach (var option in voting.Options)
             {
                 votingDto.Options.Add(new VotingOptionDto() {
                     Id = option.Id,
@@ -94,6 +94,16 @@ namespace Blog.AppLogic.DTO
             }
 
             return votingDto;
+        }
+
+    
+        public static ArticleTagDto ToDto(this ArticleTag tag)
+        {
+            return new ArticleTagDto()
+            {
+                Id = tag.Id,
+                Text = tag.Text
+            };
         }
     }
 }

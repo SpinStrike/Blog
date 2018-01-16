@@ -1,12 +1,11 @@
-﻿using System;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 using Blog.AppLogic.Service;
 using Blog.Models;
 
 namespace Blog.Controllers
 {
+    [AllowAnonymous]
     public class GuestController : Controller
     {
         public GuestController(IReviewService service)
@@ -17,9 +16,11 @@ namespace Blog.Controllers
         [HttpGet]
         public ActionResult GuestReview()
         {
+
+            var x = _service.GetAll().OrderByDescending(r => r.PublishingDate).ToList();
             var rmw = new ReviewModelWrapper()
             {
-                MainContent = _service.GetAll().OrderByDescending(r => r.PublishingDate).ToList(),
+                MainContent = x,
                 Voting = null
             };
 
@@ -29,19 +30,20 @@ namespace Blog.Controllers
         [HttpPost]
         public ActionResult AddReview(Review Review)
         {
-
             if (!ModelState.IsValid)
             {
                 var rmw = new ReviewModelWrapper()
                 {
                     MainContent = _service.GetAll().OrderByDescending(r => r.PublishingDate).ToList(),
                 };
+
                 return View("GuestReview", rmw);
             }
 
             else
             {
                 _service.Create(Review.ReviewText, Review.Author, Review.Time);
+
                 return RedirectToAction("GuestReview");
             }
         }

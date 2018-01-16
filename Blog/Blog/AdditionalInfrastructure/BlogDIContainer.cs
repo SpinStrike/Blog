@@ -23,7 +23,6 @@ namespace Blog.AdditionalInfrastructure
             return ResolveObject(type);
         }
 
-
         private void Register<TType, TConcrete>(bool isSingleton, TConcrete instance)
         {
             Type type = typeof(TType);

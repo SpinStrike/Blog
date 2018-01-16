@@ -15,5 +15,7 @@ namespace Blog.AppLogic.Service
         void Create(string title, string text, DateTime time, List<string> tags);
 
         IEnumerable<ArticleDto> GetAllByTag(Guid idTag);
+
+        IEnumerable<ArticleTagDto> GetAllTags();
     }
 }

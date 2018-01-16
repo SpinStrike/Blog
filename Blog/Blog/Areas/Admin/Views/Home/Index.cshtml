@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Панель администрирования";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class ="blog-elements-border">
+    <h2>Панель администрирования</h2>
+    
+    @Html.Label("Создать новую статью", new { @class= "main-font" })
+    @using (Html.BeginForm("Create", "Article", FormMethod.Get))
+    { 
+        <input type="submit" value="Создать"  class="main-font" />
+    }
+</div>
+

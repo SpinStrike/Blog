@@ -2,18 +2,26 @@
     <ul>
         <li class="remove-markers">
             <div class="menu-button" >
-                @Html.ActionLink("Главная", "Index", "Home", null, new { @class = "main-font remove-decoration" })
+                @Html.ActionLink("Главная", "Index", "Home", new { area = "" }, new { @class = "main-font remove-decoration" })
             </div>
         </li>
         <li class="remove-markers">
             <div class="menu-button">
-                @Html.ActionLink("Гостевая", "GuestReview", "Guest", null, new { @class = "main-font remove-decoration" })
+                @Html.ActionLink("Гостевая", "GuestReview", "Guest", new { area = "" }, new { @class = "main-font remove-decoration" })
             </div>
         </li>
         <li class="remove-markers">
          <div class="menu-button">
-               @Html.ActionLink("Анкета", "QuestionnaireHandler", "Questionnaire", null, new { @class= "main-font remove-decoration" })
+               @Html.ActionLink("Анкета", "QuestionnaireHandler", "Questionnaire", new { area = "" }, new { @class= "main-font remove-decoration" })
             </div>
         </li>
+        @if (Request.IsAuthenticated && User.IsInRole("Administrator"))
+        {
+            <li class="remove-markers">
+                <div class="menu-button">
+                    @Html.ActionLink("Панель администрирования", "Index", "Home", new { area = "Admin" }, new { @class = "main-font-smaller remove-decoration" })
+                </div>
+            </li>
+        }
     </ul>
 </div>

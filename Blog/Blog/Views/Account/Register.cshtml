@@ -1,0 +1,34 @@
+﻿@model Blog.Models.RegistrationModelWrapper
+@using Blog.Models;
+
+@{
+    ViewBag.Title = "Регистрация";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="blog-elements-border">
+    <h2 >Форма регистрации</h2>
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+    {
+        @Html.ValidationSummary(true);
+
+        @Html.Label("Логин")<br>
+        @Html.TextBoxFor(x => x.MainContent.UserName)
+        @Html.ValidationMessageFor(x => x.MainContent.UserName, null, new { @class = "validation-summary-errors" })<br><br>
+
+        @Html.Label("E-mail")<br>
+        @Html.TextBoxFor(x => x.MainContent.Email)
+        @Html.ValidationMessageFor(x => x.MainContent.Email, null, new { @class = "validation-summary-errors" })<br><br>
+
+        @Html.Label("Пароль")<br>
+        @Html.PasswordFor(x => x.MainContent.Password)
+        @Html.ValidationMessageFor(x => x.MainContent.Password, null, new { @class = "validation-summary-errors" })<br><br>
+
+        @Html.Label("Подтвердите пароль")<br>
+        @Html.PasswordFor(x => x.MainContent.ConfirmPassword)
+        @Html.ValidationMessageFor(x => x.MainContent.ConfirmPassword, null, new { @class = "validation-summary-errors" })<br><br>
+
+        <input type="submit" value="Создать" />
+    }
+</div>
+
